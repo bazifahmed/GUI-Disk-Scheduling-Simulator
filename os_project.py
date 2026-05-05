@@ -435,7 +435,8 @@ class DiskSchedulerApp(tk.Tk):
                      anchor="center").grid(row=2, column=c, padx=6, pady=4)
 
         best_seek = all_results[best_name][1]
-        for r_idx, (algo, (_, seek)) in enumerate(all_results.items(), start=3):
+        sorted_results = sorted(all_results.items(), key=lambda x: x[1][1])
+        for r_idx, (algo, (_, seek)) in enumerate(sorted_results, start=3):
             is_best = (algo == best_name)
             row_bg  = SURFACE if is_best else CARD
             fg_col  = color_map[algo] if is_best else SUBTEXT
